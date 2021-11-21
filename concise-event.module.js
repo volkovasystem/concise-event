@@ -41,7 +41,7 @@ const ConciseEvent = (
 );
 
 const addEventListener = (
-	function addEventListener( ){
+	function addEventListener( eventName, handler, option ){
 
 	}
 );
@@ -74,7 +74,7 @@ const addEventListener = (
 );
 
 const removeEventListener = (
-	function removeEventListener( ){
+	function removeEventListener( eventName, handler, option ){
 
 	}
 );
@@ -107,7 +107,7 @@ const removeEventListener = (
 );
 
 const dispatchEvent = (
-	function dispatchEvent( ){
+	function dispatchEvent( eventName, parameterList ){
 
 	}
 );

@@ -1,0 +1,36 @@
+{
+	"name": "@volkovasystem/concise-event",
+	"alias": "concise-event",
+	"version": "0.0.0",
+	"description": "Event and emitter that concisely works.",
+	"main": "concise-event.js",
+	"scripts": {
+		"clean": "rm -rf ./node_modules || true && rm -fv ./package-lock.json || true && npm cache clean --force",
+		"reset": "npm run clean && rm -rfv ./callback-once.js || true && rm -rfv ./.build || true && rm -rfv ./.test || true",
+		"bundle": "npx parcel build ./*.module.js --no-cache --no-source-maps --no-minify --out-dir ./.build --out-file ./callback-once.bundle.js --global callbackOnce",
+		"compress": "npx terser ./.build/callback-once.bundle.js --compress --keep-classnames --keep-fnames --output ./.build/callback-once.js",
+		"resolve": "mv ./.build/callback-once.js ./callback-once.js && rm -rfv ./.build || true",
+		"build": "npm run bundle && npm run compress && npm run resolve",
+		"test": "node ./callback-once.test.js",
+		"stage": "npm run reset && npm install && npm run build && npm test && npm run clean",
+		"prepublishOnly": "npm run stage"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/volkovasystem/concise-event.git"
+	},
+	"keywords": [
+		"concise",
+		"event",
+		"emitter"
+	],
+	"author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+	"contributors": [
+		"Richeve S. Bebedor <richeve.bebedor@gmail.com>"
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/volkovasystem/concise-event/issues"
+	},
+	"homepage": "https://github.com/volkovasystem/concise-event#readme"
+}

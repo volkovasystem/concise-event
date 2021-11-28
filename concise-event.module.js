@@ -35,14 +35,126 @@
 */
 
 const ConciseEvent = (
-	function ConciseEvent( scope ){
+	function ConciseEvent( scope, option ){
+		if(
+				(
+						(
+										this
+							instanceof	ConciseEvent
+						)
+					===	true
+				)
+		){
+			(
+					this
+					.scope
+				=	(
+						scope
+					)
+			);
 
+			(
+					this
+					.option
+				=	(
+						scope
+					)
+			);
+
+			if(
+					(
+							typeof
+							require
+						==	"function"
+					)
+				&&
+					(
+							typeof
+							require( "events" )
+						==	"function"
+					)
+			){
+				const EventEmitter = require( "events" );
+
+				(
+						this
+						.emitter
+					=	(
+							new	EventEmitter( )
+						)
+				);
+			}
+			else if(
+					(
+							typeof
+							document
+						==	"object"
+					)
+				&&
+					(
+							typeof
+							HTMLDocument
+						==	"function"
+					)
+				&&
+					(
+							(
+											document
+								instanceof	HTMLDocument
+							)
+						===	true
+					)
+			){
+				(
+						this
+						.emitter
+					=	(
+							document
+						)
+				);
+			}
+			else{
+				(
+						this
+						.emitter
+					=	(
+							{ }
+						)
+				);
+			}
+		}
+		else{
+			return	(
+						new	ConciseEvent( scope, option )
+					);
+		}
 	}
 );
 
 const addEventListener = (
 	function addEventListener( eventName, handler, option ){
+		if(
+				(
+						typeof
+						this
+						.emitter
+						.addListener
+					==	"function"
+				)
+		){
 
+		}
+		else if(
+				(
+						typeof
+						this
+						.emitter
+						.addListener
+					==	"function"
+				)
+		){
+
+		}
 	}
 );
 
@@ -70,6 +182,17 @@ const addEventListener = (
 		.on
 	=	(
 			addEventListener
+		)
+);
+
+(
+		ConciseEvent
+		.prototype
+		.once
+	=	(
+			function once( ){
+
+			}
 		)
 );
 
